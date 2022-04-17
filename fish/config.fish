@@ -29,6 +29,17 @@ function ddg -d "search duckduckgo"
     open "https://duckduckgo.com/?q=$argv"
 end
 
+
+# Type - to move up to top partent dir which is a repository
+function d
+    while test $PWD != "/"
+        if test -d .git
+            break
+        end
+        cd ..
+    end
+end
+
 # Fish git prompt
 #set __fish_git_prompt_showuntrackedfiles 'yes'
 #set __fish_git_prompt_showdirtystate 'yes'

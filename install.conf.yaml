@@ -1,9 +1,23 @@
 - defaults:
     link:
+      create: true
       relink: true
+
 
 - clean: ['~']
 
 - link:
     ~/.vimrc:
     ~/.tmux.conf:
+    ~/.gitconfig:
+    ~/.config/test: 
+    ~/.config/kitty/kitty.config: kitty/kitty.config
+    ~/.config/fish/fish.config: fish/config.fish
+    ~/.config/karabiner/karabiner.json: karabiner/karabiner.json
+    ~/.config/karabiner/assets: karabiner/assets
+    ~/.config/yabairc:
+    ~/.hammerspoon:
+    ~/.vim:
+- shell:
+    - git submodule sync --recursive
+    - git update-submodules
