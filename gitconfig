@@ -1,6 +1,9 @@
 [user]
     name = Hung Do
     email = hquocdo@gmail.com
+
+[init]
+    defaultBranch = master
 [ui "color"]
     ui = always
 [color]
@@ -9,6 +12,8 @@
     c = commit
     s = status
     st = status
+    # Commit all changes
+    ca = !git add --all && git commit
     lg = log --oneline
     last = log -1 HEAD
     f = push --force-with-lease
@@ -16,8 +21,7 @@
     ff = only
 [push]
     default = simple
-[diff]
-    algorithm = patience
-    compactionHeuristic = true
+[merge]
+    tool = vim -d
 [protocol]
     version = 2

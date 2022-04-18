@@ -75,14 +75,6 @@ bindCmd({"ctrl", "alt" }, "1", "/usr/local/bin/yabai -m display --focus 1")
 bindCmd({"ctrl", "alt" }, "2", "/usr/local/bin/yabai -m display --focus 2")
 bindCmd({"ctrl", "alt" }, "3", "/usr/local/bin/yabai -m display --focus 3")
 
--- send window to monitor and follow focus
-bindCmd({"ctrl", "cmd" }, "x", "/usr/local/bin/yabai -m window --display recent; /usr/local/bin/yabai -m display --focus recent")
-bindCmd({"ctrl", "cmd" }, "z", "/usr/local/bin/yabai -m window --display prev; /usr/local/bin/yabai -m display --focus prev")
-bindCmd({"ctrl", "cmd" }, "c", "/usr/local/bin/yabai -m window --display next; /usr/local/bin/yabai -m display --focus next")
-bindCmd({"ctrl", "cmd" }, "1", "/usr/local/bin/yabai -m window --display 1; /usr/local/bin/yabai -m display --focus 1")
-bindCmd({"ctrl", "cmd" }, "2", "/usr/local/bin/yabai -m window --display 2; /usr/local/bin/yabai -m display --focus 2")
-bindCmd({"ctrl", "cmd" }, "3", "/usr/local/bin/yabai -m window --display 3; /usr/local/bin/yabai -m display --focus 3")
-
 -- bindCmd({"ctrl", "cmd" }, "h", "/usr/local/bin/yabai -m window --display prev; /usr/local/bin/yabai -m display --focus prev")
 bindCmd({"ctrl", "cmd" }, "l", "/usr/local/bin/yabai -m window --display next; /usr/local/bin/yabai -m display --focus next")
 
@@ -152,17 +144,6 @@ bindCmd({"alt"}, "p", "/usr/local/bin/yabai -m window --toggle sticky;\
 -- change layout of desktop
 bindCmd({"ctrl", "alt"}, "a", "/usr/local/bin/yabai -m space --layout bsp")
 bindCmd({"ctrl", "alt"}, "d", "/usr/local/bin/yabai -m space --layout float")
-
--- create desktop and follow focus - uses jq for parsing json (brew install jq)
-bindCmd({"cmd", "alt"}, "n", '/usr/local/bin/yabai -m space --create && \
-index="$(/usr/local/bin/yabai -m query --spaces --display | /usr/local/bin/jq \'map(select(."native-fullscreen" == 0))[-1].index\')" && \
-/usr/local/bin/yabai -m space --focus "${index}"')
-
--- create desktop, move window and follow focus - uses jq for parsing json (brew install jq)
-bindCmd({"ctrl", "cmd"}, "n", '/usr/local/bin/yabai -m space --create && \
-index=$(/usr/local/bin/yabai -m query --spaces --display | /usr/local/bin/jq \'map(select(."native-fullscreen" == 0))[-1].index\') && \
-/usr/local/bin/yabai -m window --space "${index}" && \
-/usr/local/bin/yabai -m space --focus "${index}"')
 
 -- Destroy current space
 bindCmd({"cmd", "alt"}, "delete", "/usr/local/bin/yabai -m space --destroy")
